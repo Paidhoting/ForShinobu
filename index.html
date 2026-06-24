@@ -3,847 +3,360 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BadmoshNodes - Powering Your Pixel Worlds</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Customizing Tailwind for a Dark/Blue Cyberpunk look -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'primary': '#4F46E5', // Indigo-600
-                        'primary-light': '#818CF8', // Indigo-400 for text/glow
-                        'bg-dark': '#0F0F1A', 
-                        'bg-card': '#1A1A2A', 
-                        'secondary-accent': '#FFC000', // Gold/Yellow
-                    },
-                    fontFamily: {
-                        heading: ['Orbitron', 'sans-serif'],
-                        body: ['Montserrat', 'sans-serif'],
-                    },
-                    boxShadow: {
-                        'glow': '0 0 15px rgba(79, 70, 229, 0.7)',
-                        'card-hover': '0 0 30px rgba(79, 70, 229, 0.5)',
-                    },
-                    transitionProperty: {
-                        'shadow': 'box-shadow',
-                    }
-                }
-            }
-        }
-    </script>
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
-    
-    <!-- Custom styles for non-Tailwind elements and structure -->
+    <title>Deep Within My Heart</title>
     <style>
-        html {
-            scroll-behavior: smooth;
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            font-family: var(--font-body);
-            background-color: #0F0F1A; 
-            color: #E0E0E0;
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-        
-        .header-height { height: 80px; }
-        
-        body.overlay-active {
-            overflow: hidden; 
+            background: radial-gradient(circle at center, #1a0508 0%, #0b0b0b 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            font-family: 'Poppins', sans-serif;
         }
 
-        /* Animated Grid Background - Minimalistic version */
-        .background-grid {
-            position: fixed;
-            top: 0;
-            left: 0;
+        /* God-Level Neon Aura & Particles */
+        .background-animation {
+            position: absolute;
             width: 100%;
             height: 100%;
-            overflow: hidden;
-            z-index: -10; 
-            background: linear-gradient(180deg, #0F0F1A 0%, #151525 100%);
-            background-image: 
-                linear-gradient(0deg, rgba(79, 70, 229, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(79, 70, 229, 0.05) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: grid-pan 60s linear infinite;
-            opacity: 0.2;
-        }
-
-        @keyframes grid-pan {
-            0% { background-position: 0 0; }
-            100% { background-position: -50px -50px; }
-        }
-
-        /* Overlay Styles */
-        #plans-overlay, #sub-plans-overlay {
-            position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: #0F0F1A; 
-            z-index: 1500; 
-            display: none; 
-            overflow-y: auto; 
-            padding-top: 80px; 
+            pointer-events: none;
+            z-index: 1;
         }
 
-        #sub-plans-overlay { z-index: 1600; }
-        
-        /* Payment Modal Styles (Level 3) */
-        #payment-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
-            z-index: 2000;
-            display: none;
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            align-items: center;
-            justify-content: center;
-            animation: fadeIn 0.3s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal-content {
-            animation: scaleIn 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-        }
-
-        @keyframes scaleIn {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        /* New CSS for smooth header appearance */
-        #header {
-            transform: translateY(-100%);
+        .glow-particle {
+            position: absolute;
+            background: linear-gradient(135deg, #ff0044 0%, #ff4d79 100%);
+            border-radius: 50%;
+            animation: floatUp 6s ease-in-out infinite;
             opacity: 0;
+            filter: blur(1px) drop-shadow(0 0 12px #ff0044);
         }
-        #header.is-visible {
-            transform: translateY(0);
-            opacity: 1;
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(105vh) translateX(0) scale(0.5);
+                opacity: 0;
+            }
+            20% { opacity: 0.6; }
+            80% { opacity: 0.6; }
+            100% {
+                transform: translateY(-10vh) translateX(80px) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Ultra Premium Glassmorphism Container */
+        .container {
+            width: 92%;
+            max-width: 440px;
+            background: rgba(11, 11, 11, 0.65);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 0, 68, 0.35);
+            border-radius: 35px;
+            padding: 50px 30px;
+            text-align: center;
+            box-shadow: 0 0 60px rgba(255, 0, 68, 0.25), inset 0 0 30px rgba(255, 255, 255, 0.02);
+            z-index: 10;
+            position: relative;
+        }
+
+        .card {
+            display: none;
+        }
+
+        .card.active {
+            display: block;
+            animation: premiumReveal 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes premiumReveal {
+            from { opacity: 0; transform: scale(0.92) translateY(20px); filter: blur(4px); }
+            to { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+        }
+
+        .premium-icon {
+            font-size: 65px;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 20px rgba(255, 0, 68, 0.6));
+            animation: slowPulse 2.5s infinite ease-in-out;
+        }
+
+        @keyframes slowPulse {
+            0%, 100% { transform: scale(1) rotate(0deg); filter: drop-shadow(0 0 20px rgba(255, 0, 68, 0.6)); }
+            50% { transform: scale(1.08) rotate(3deg); filter: drop-shadow(0 0 30px rgba(255, 0, 68, 0.9)); }
+        }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 25px;
+            line-height: 1.4;
+            letter-spacing: 1px;
+            text-shadow: 0 0 15px rgba(255, 0, 68, 0.5), 0 0 2px #ffffff;
+        }
+
+        /* God-Level Luxury Typography for the Message Content */
+        .typewriter-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            color: #e5e5e5;
+            line-height: 1.9;
+            margin-bottom: 40px;
+            font-weight: 400;
+            font-style: italic;
+            letter-spacing: 0.4px;
+            min-height: 110px;
+            text-shadow: 0 0 1px rgba(255,255,255,0.1);
+        }
+
+        /* Neon Futuristic Button */
+        .btn {
+            background: linear-gradient(135deg, #ff0044 0%, #cc0033 100%);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 16px 35px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 0, 68, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+            outline: none;
+            letter-spacing: 1.2px;
+            display: inline-block;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+            box-shadow: 0 4px 12px rgba(255, 0, 68, 0.3);
+        }
+
+        /* Decision Choice Buttons */
+        .choice-container {
+            display: flex;
+            gap: 15px;
+            position: relative;
+            height: 55px;
+            margin-top: 25px;
+        }
+
+        .btn-choice {
+            flex: 1;
+            height: 100%;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            letter-spacing: 0.5px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, #00ff87 0%, #60efff 100%);
+            color: #0b0b0b;
+            box-shadow: 0 6px 25px rgba(0, 255, 135, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-no {
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: absolute;
+            width: calc(50% - 8px);
+            right: 0;
         }
     </style>
 </head>
-<body class="bg-bg-dark text-gray-200 font-body">
+<body>
 
-    <!-- Animated Grid Background -->
-    <div class="background-grid"></div>
-    
-    <!-- Header/Navigation Bar -->
-    <header id="header" class="header-height fixed top-0 w-full z-50 bg-bg-dark bg-opacity-90 backdrop-blur-md border-b border-primary-light/20 shadow-lg shadow-black/50 transition-all duration-700 ease-in-out">
-        <div class="container mx-auto px-6 h-full flex justify-between items-center">
-            <a href="#home" class="logo">
-                <span class="text-2xl font-heading font-bold text-primary-light tracking-wider shadow-primary-light/50 drop-shadow-xl hover:text-white transition duration-300">
-                    BadmoshNodes
-                </span> 
-            </a>
-            <nav class="space-x-8 hidden md:flex">
-                <a href="#home" class="nav-link text-lg text-gray-300 hover:text-primary transition duration-300 relative group">Home
-                    <span class="absolute bottom-[-5px] left-0 w-full h-0.5 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-                </a>
-                <a href="#features" class="nav-link text-lg text-gray-300 hover:text-primary transition duration-300 relative group">Features
-                    <span class="absolute bottom-[-5px] left-0 w-full h-0.5 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-                </a>
-                <!-- Discord link -->
-                <a href="https://discord.gg/3Dxx7MeNTp" target="_blank" class="nav-link text-lg text-gray-300 hover:text-primary transition duration-300 relative group">Discord
-                    <span class="absolute bottom-[-5px] left-0 w-full h-0.5 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-                </a>
-                <!-- Contact link added -->
-                <a href="#contact" class="nav-link text-lg text-gray-300 hover:text-primary transition duration-300 relative group">Contact
-                    <span class="absolute bottom-[-5px] left-0 w-full h-0.5 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-                </a>
-            </nav>
+    <div class="background-animation" id="bgAnimation"></div>
+
+    <div class="container">
+        
+        <!-- Screen 1: Intro -->
+        <div class="card active" id="card1">
+            <div class="premium-icon">✨❤️✨</div>
+            <h2>A Beautiful Connection</h2>
+            <div class="typewriter-text" id="text1">I know hum dono recently hi mile hain aur shayad ek dusre ko poori tarah jante bhi nahi par kuch log zindagi me aese aate hain jinke sath bitaya hua har ek pal bhot zyada keemti lagne lagta hai</div>
+            <button class="btn" onclick="nextCard(1)">Enter My Thoughts</button>
         </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center pt-24 pb-16">
-        <div class="container mx-auto px-6 text-center">
-            <div class="hero-content">
-                <h1 class="text-5xl md:text-6xl font-heading font-extrabold text-white tracking-wide mb-4 animate-in" style="text-shadow: 0 0 10px rgba(79, 70, 229, 0.8);">
-                    POWERING YOUR PIXEL WORLDS
-                </h1>
-                <p class="text-2xl font-heading text-primary-light mb-8 animate-in delay-1">
-                    LAG-FREE SECURE INSTANT HOSTING
-                </p>
-                <p class="text-xl text-gray-400 mb-12 max-w-4xl mx-auto animate-in delay-2">
-                    Apna high-performance server chalao kuch hi minutes mein BadmoshNodes ke saath. Best latency aur security.
-                </p>
-                
-                <div class="hero-buttons flex justify-center space-x-6 animate-in delay-3">
-                    <a href="#pricing" class="px-8 py-3 rounded-lg font-bold text-lg uppercase bg-primary text-white transition duration-300 hover:bg-indigo-700 hover:shadow-glow focus:outline-none">
-                        EXPLORE PLANS
-                    </a>
-                    <a href="https://discord.gg/3Dxx7MeNTp" target="_blank" class="px-8 py-3 rounded-lg font-bold text-lg uppercase border-2 border-primary text-primary-light bg-transparent transition duration-300 hover:bg-primary/20 hover:text-white focus:outline-none">
-                        JOIN COMMUNITY
-                    </a>
-                </div>
+        <!-- Screen 2: Clarification -->
+        <div class="card" id="card2">
+            <div class="premium-icon">🕯️🌹</div>
+            <h2>From My Heart</h2>
+            <div class="typewriter-text" id="text2"></div>
+            <button class="btn" id="btn2" style="display:none;" onclick="nextCard(2)">Listen Closer</button>
+        </div>
+
+        <!-- Screen 3: Connection -->
+        <div class="card" id="card3">
+            <div class="premium-icon">🔮✨</div>
+            <h2>We Are The Same</h2>
+            <div class="typewriter-text" id="text3"></div>
+            <button class="btn" id="btn3" style="display:none;" onclick="nextCard(3)">A Sacred Bond</button>
+        </div>
+
+        <!-- Screen 4: Radha Krishna Pure Love -->
+        <div class="card" id="card4">
+            <div class="premium-icon">🪈🦚</div>
+            <h2>Like Radha Krishna</h2>
+            <div class="typewriter-text" id="text4"></div>
+            <button class="btn" id="btn4" style="display:none;" onclick="nextCard(4)">My True Self</button>
+        </div>
+
+        <!-- Screen 5: Care and Nature -->
+        <div class="card" id="card5">
+            <div class="premium-icon">🤝💎</div>
+            <h2>My Pure Intentions</h2>
+            <div class="typewriter-text" id="text5"></div>
+            <button class="btn" id="btn5" style="display:none;" onclick="nextCard(5)">Unconditional Promises</button>
+        </div>
+
+        <!-- Screen 6: Everything For Your Happiness -->
+        <div class="card" id="card6">
+            <div class="premium-icon">❤️‍🔥🌌</div>
+            <h2>Everything For You</h2>
+            <div class="typewriter-text" id="text6"></div>
+            <button class="btn" id="btn6" style="display:none;" onclick="nextCard(6)">Standing By You</button>
+        </div>
+
+        <!-- Screen 7: Lifetime Support -->
+        <div class="card" id="card7">
+            <div class="premium-icon">♾️👑</div>
+            <h2>Through Every Storm</h2>
+            <div class="typewriter-text" id="text7"></div>
+            <button class="btn" id="btn7" style="display:none;" onclick="nextCard(7)">The Ultimate Vow</button>
+        </div>
+
+        <!-- Screen 8: Real Promises -->
+        <div class="card" id="card8">
+            <div class="premium-icon">💍💖</div>
+            <h2>My Ultimate Promises</h2>
+            <div class="typewriter-text" id="text8"></div>
+            <button class="btn" id="btn8" style="display:none;" onclick="nextCard(8)">The Final Question</button>
+        </div>
+
+        <!-- Screen 9: Final Proposal -->
+        <div class="card" id="card9">
+            <div class="premium-icon">💘👑💘</div>
+            <h2>Will You Be Mine</h2>
+            <div class="typewriter-text" id="text9"></div>
+            <div class="choice-container" id="btn9" style="display:none;">
+                <button class="btn-choice btn-yes" onclick="celebrate()">HAAN! 💖</button>
+                <button class="btn-choice btn-no" id="noBtn" onmouseover="moveNoButton()" onclick="moveNoButton()">Na</button>
             </div>
         </div>
-    </section>
 
-    <!-- Features Section -->
-    <section id="features" class="py-20 md:py-32 bg-bg-dark/50">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-heading font-bold text-primary-light mb-4 animate-in">ADVANCED FEATURES</h2>
-            <p class="text-xl text-gray-400 mb-16 animate-in delay-1">Har BadmoshNodes plan mein hai powerful features behtareen hosting ke liye.</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                
-                <!-- Feature Card 1 -->
-                <div class="feature-card bg-bg-card p-8 rounded-xl border border-primary/20 shadow-lg hover:shadow-card-hover transition duration-500 transform hover:-translate-y-2 animate-in delay-2">
-                    <span class="text-5xl text-primary-light mb-4 block">⚡</span>
-                    <h3 class="text-xl font-heading font-semibold text-white mb-3">24/7 UPTIME</h3>
-                    <p class="text-gray-400 text-sm">Hamara infrastructure guarantee karta hai 99.99% uptime with minimal downtime.</p>
-                </div>
-                
-                <!-- Feature Card 2 -->
-                <div class="feature-card bg-bg-card p-8 rounded-xl border border-primary/20 shadow-lg hover:shadow-card-hover transition duration-500 transform hover:-translate-y-2 animate-in delay-3">
-                    <span class="text-5xl text-primary-light mb-4 block">🛡️</span>
-                    <h3 class="text-xl font-heading font-semibold text-white mb-3">DDoS PROTECTION</h3>
-                    <p class="text-gray-400 text-sm">Enterprise-grade security malicious traffic ko rokta hai, aapka server hamesha online rehta hai.</p>
-                </div>
-                
-                <!-- Feature Card 3 -->
-                <div class="feature-card bg-bg-card p-8 rounded-xl border border-primary/20 shadow-lg hover:shadow-card-hover transition duration-500 transform hover:-translate-y-2 animate-in delay-4">
-                    <span class="text-5xl text-primary-light mb-4 block">🔒</span>
-                    <h3 class="text-xl font-heading font-semibold text-white mb-3">100% SECURE</h3>
-                    <p class="text-gray-400 text-sm">Advanced security protocols aur monitoring se aapka data aur server poori tarah secure hai.</p>
-                </div>
-                
-                <!-- Feature Card 4 -->
-                <div class="feature-card bg-bg-card p-8 rounded-xl border border-primary/20 shadow-lg hover:shadow-card-hover transition duration-500 transform hover:-translate-y-2 animate-in delay-2">
-                    <span class="text-5xl text-primary-light mb-4 block">🚀</span>
-                    <h3 class="text-xl font-heading font-semibold text-white mb-3">LAG-FREE PERFORMANCE</h3>
-                    <p class="text-gray-400 text-sm">Premium optimized hardware par smooth aur high-performance gameplay experience karein.</p>
-                </div>
-
-                <!-- Feature Card 5: Advanced Panel Link -->
-                <a href="https://panel.badmoshnodes.com" target="_blank" class="feature-card bg-bg-card p-8 rounded-xl border border-primary/20 shadow-lg hover:shadow-card-hover transition duration-500 transform hover:-translate-y-2 flex flex-col justify-between animate-in delay-3">
-                    <div>
-                        <span class="text-5xl text-primary-light mb-4 block">⚙️</span>
-                        <h3 class="text-xl font-heading font-semibold text-white mb-3">ADVANCED PANEL</h3>
-                        <p class="text-gray-400 text-sm mb-4">Advanced features, customizability, aur priority support ke liye hamara premium panel use karein.</p>
-                    </div>
-                    <div class="mt-4 inline-block px-4 py-2 bg-primary text-white rounded-md text-sm font-bold hover:bg-indigo-700 transition">ACCESS PANEL</div>
-                </a>
-                
-            </div>
+        <!-- Screen 10: Success Celebration -->
+        <div class="card" id="card10">
+            <div class="premium-icon">🥳🎉🌌</div>
+            <h2>Thank You For Existing</h2>
+            <div class="typewriter-text" id="text10"></div>
         </div>
-    </section>
 
-    <!-- Pricing/Nodes Section -->
-    <section id="pricing" class="py-20 md:py-32">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-heading font-bold text-primary-light mb-4 animate-in">CHOOSE YOUR NODE</h2>
-            <p class="text-xl text-gray-400 mb-16 max-w-4xl mx-auto animate-in delay-1">Apne liye sabse nazdeek region chunein low latency aur behtareen performance ke liye.</p>
-            
-            <!-- Main Node Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                
-                <!-- INDIA NODE -->
-                <a href="#" onclick="showPlans('india'); return false;" class="pricing-card bg-bg-card p-8 rounded-xl border-2 border-primary/30 shadow-xl shadow-black/50 hover:shadow-card-hover transition duration-500 transform hover:-translate-y-3 flex flex-col justify-between cursor-pointer animate-in delay-2">
-                    <div>
-                        <h3 class="text-3xl font-heading font-bold text-white mb-2">INDIA NODE</h3>
-                        <p class="text-sm text-gray-400 mb-6">High-speed hosting, India aur aas-paas ke regions ke liye perfect.</p>
-                    </div>
-                    <div>
-                        <span class="inline-block px-4 py-1 text-sm font-semibold rounded-full bg-secondary-accent text-gray-900 mb-4">LOW LATENCY</span>
-                        <div class="mt-4 px-6 py-3 bg-primary text-white rounded-lg text-lg font-bold uppercase hover:bg-indigo-700 transition">VIEW PLANS</div>
-                    </div>
-                </a>
-                
-                <!-- GERMANY NODE -->
-                <a href="#" onclick="showPlans('germany'); return false;" class="pricing-card bg-bg-card p-8 rounded-xl border-2 border-primary/30 shadow-xl shadow-black/50 hover:shadow-card-hover transition duration-500 transform hover:-translate-y-3 flex flex-col justify-between cursor-pointer animate-in delay-3">
-                    <div>
-                        <h3 class="text-3xl font-heading font-bold text-white mb-2">GERMANY NODE</h3>
-                        <p class="text-sm text-gray-400 mb-6">Premium European hosting robust DDoS protection ke saath.</p>
-                    </div>
-                    <div>
-                        <span class="inline-block px-4 py-1 text-sm font-semibold rounded-full bg-secondary-accent text-gray-900 mb-4">EU OPTIMIZED</span>
-                        <div class="mt-4 px-6 py-3 bg-primary text-white rounded-lg text-lg font-bold uppercase hover:bg-indigo-700 transition">VIEW PLANS</div>
-                    </div>
-                </a>
-                
-                <!-- SINGAPORE NODE -->
-                <a href="#" onclick="showPlans('singapore'); return false;" class="pricing-card bg-bg-card p-8 rounded-xl border-2 border-primary/30 shadow-xl shadow-black/50 hover:shadow-card-hover transition duration-500 transform hover:-translate-y-3 flex flex-col justify-between cursor-pointer animate-in delay-4">
-                    <div>
-                        <h3 class="text-3xl font-heading font-bold text-white mb-2">SINGAPORE NODE</h3>
-                        <p class="text-sm text-gray-400 mb-6">Asia-Pacific hub, Asia aur Oceania mein behtareen connectivity ke liye.</p>
-                    </div>
-                    <div>
-                        <span class="inline-block px-4 py-1 text-sm font-semibold rounded-full bg-secondary-accent text-gray-900 mb-4">ASIA-PACIFIC</span>
-                        <div class="mt-4 px-6 py-3 bg-primary text-white rounded-lg text-lg font-bold uppercase hover:bg-indigo-700 transition">VIEW PLANS</div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT & SUPPORT SECTION -->
-    <section id="contact" class="py-16 md:py-24 bg-bg-card border-t border-primary/30">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-heading font-bold text-primary-light mb-4 animate-in">CONTACT & SUPPORT LINKS</h2>
-            <p class="text-lg text-gray-400 mb-12 animate-in delay-1">Humare official channels dhoondhe support aur community ke liye. Click to open link.</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                
-                <!-- Official Website (Link hidden, triggered by click) -->
-                <a href="https://paidhoting.github.io/BadmoshNodes" target="_blank" class="contact-link bg-gray-900 p-6 rounded-xl border border-primary/20 hover:border-primary transition duration-300 transform hover:scale-[1.02] text-left animate-in delay-2 group cursor-pointer">
-                    <h3 class="text-xl font-heading font-semibold text-primary-light mb-1 group-hover:text-white transition duration-300">OFFICIAL WEBSITE</h3>
-                </a>
-
-                <!-- Panel Login (Link hidden, triggered by click) -->
-                <a href="https://panel.badmoshnodes.com/" target="_blank" class="contact-link bg-gray-900 p-6 rounded-xl border border-primary/20 hover:border-primary transition duration-300 transform hover:scale-[1.02] text-left animate-in delay-3 group cursor-pointer">
-                    <h3 class="text-xl font-heading font-semibold text-primary-light mb-1 group-hover:text-white transition duration-300">PANEL LOGIN</h3>
-                </a>
-                
-                <!-- Discord (Link hidden, triggered by click) -->
-                <a href="https://discord.com/invite/3Dxx7MeNTp" target="_blank" class="contact-link bg-gray-900 p-6 rounded-xl border border-primary/20 hover:border-primary transition duration-300 transform hover:scale-[1.02] text-left animate-in delay-4 group cursor-pointer">
-                    <h3 class="text-xl font-heading font-semibold text-primary-light mb-1 group-hover:text-white transition duration-300">DISCORD</h3>
-                </a>
-                
-                <!-- Gmail (Coming Soon) - Still disabled -->
-                <div class="contact-link bg-gray-900 p-6 rounded-xl border border-gray-700 text-left opacity-60 cursor-default animate-in delay-5" title="Support email jald hi aayega!">
-                    <h3 class="text-xl font-heading font-semibold text-gray-500 mb-1">GMAIL (SOON)</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-8 bg-bg-dark/50 border-t border-primary/10">
-        <div class="container mx-auto px-6 text-center text-sm text-gray-500">
-            <p>&copy; 2025 BadmoshNodes - ALL PROTOCOLS RESERVED.</p>
-        </div>
-    </footer>
-    
-    <!-- LEVEL 1 OVERLAY: Node Plan Tiers (Budget, Premium, Ultra) -->
-    <div id="plans-overlay" class="fixed top-0 left-0 w-full h-full bg-bg-dark z-1500 overflow-y-auto pt-20 hidden">
-        <div class="container mx-auto px-6 min-h-screen pt-10 pb-16 text-center">
-            
-            <!-- Back Button -->
-            <button onclick="showMainNodes()" class="px-6 py-2 rounded-lg font-bold uppercase border border-primary-light text-primary-light bg-transparent transition duration-300 hover:bg-primary/20 mb-8 focus:outline-none">
-                ← BACK TO NODES
-            </button>
-
-            <!-- Dynamic Title and Subtitle -->
-            <h2 id="detail-title" class="text-4xl font-heading font-bold text-white mb-2"></h2>
-            <p id="detail-subtitle" class="text-xl text-gray-400 mb-12"></p>
-
-            <!-- Plan Grid (Content injected by JavaScript) -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="detail-plan-grid">
-                <!-- Plan Tiers will be generated here -->
-            </div>
-        </div>
-    </div>
-    
-    <!-- LEVEL 2 OVERLAY: Detailed Sub-Plans (Plan 1-9) -->
-    <div id="sub-plans-overlay" class="fixed top-0 left-0 w-full h-full bg-bg-dark z-1600 overflow-y-auto pt-20 hidden">
-        <div class="container mx-auto px-6 min-h-screen pt-10 pb-16 text-center">
-            
-            <!-- Back Button to Tier Selection -->
-            <button id="sub-plans-back-button" class="px-6 py-2 rounded-lg font-bold uppercase border border-primary-light text-primary-light bg-transparent transition duration-300 hover:bg-primary/20 mb-8 focus:outline-none">
-                ← BACK TO TIERS
-            </button>
-            
-            <h2 id="sub-detail-title" class="text-4xl font-heading font-bold text-white mb-2"></h2>
-            <p id="sub-detail-subtitle" class="text-xl text-gray-400 mb-12">Apna perfect configuration chunein. Jab chahe scale up ya down karein.</p>
-            
-            <!-- Sub-Plan List (Content injected by JavaScript) -->
-            <div id="sub-plans-container" class="max-w-4xl mx-auto space-y-4">
-                <!-- Plan 1-9 List will be generated here -->
-            </div>
-        </div>
     </div>
 
-    <!-- LEVEL 3 OVERLAY: PAYMENT MODAL (NEW) -->
-    <div id="payment-modal" class="hidden absolute top-0 left-0 w-full h-full flex items-center justify-center p-4">
-        <div class="modal-content bg-bg-card p-8 rounded-xl border border-primary/50 shadow-2xl shadow-primary/30 max-w-xl w-full text-center">
-            <h3 class="text-3xl font-heading font-bold text-secondary-accent mb-2">Complete Your Payment</h3>
-            <p class="text-lg text-gray-400 mb-6">You've selected the <span id="selected-plan-name" class="text-primary-light font-bold"></span></p>
-
-            <div class="bg-gray-900 p-6 rounded-lg mb-6 border border-primary/20">
-                <p class="text-base text-gray-300 font-bold mb-4">Scan the QR code or use the UPI ID below to complete your payment</p>
-                
-                <!-- QR Code (Placeholder - Replace URL with actual QR Code) -->
-                <img id="upi-qr-code" src="https://placehold.co/200x200/4F46E5/FFFFFF?text=UPI+QR+CODE" 
-                     onerror="this.onerror=null; this.src='https://placehold.co/200x200/4F46E5/FFFFFF?text=QR+Error';"
-                     alt="UPI QR Code" class="mx-auto rounded-lg mb-4 border-4 border-primary shadow-glow">
-                
-                <!-- UPI ID with Copy Button -->
-                <div class="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-3 bg-gray-800 p-3 rounded-md">
-                    <span id="upi-id-text" class="text-xl font-heading text-white select-all">sushantlite@fam</span>
-                    <button onclick="copyUpiId()" class="px-4 py-1.5 bg-secondary-accent text-gray-900 rounded-md text-sm font-bold uppercase hover:bg-yellow-500 transition focus:outline-none flex items-center">
-                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path><path d="M6 3a2 2 0 00-2 2v9a2 2 0 002 2h2.553a1 1 0 01.832.445l.216.323a1 1 0 001.658 0l.216-.323a1 1 0 01.832-.445H14a2 2 0 002-2V5a2 2 0 00-2-2h-3V1a1 1 0 10-2 0v2H8zm2 4a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z"></path></svg>
-                        Copy
-                    </button>
-                </div>
-            </div>
-
-            <!-- Important Instructions -->
-            <p class="text-base text-primary-light font-semibold mb-6">
-                Once paid create a ticket on our <a href="https://discord.com/invite/3Dxx7MeNTp" target="_blank" class="text-secondary-accent hover:underline">Discord</a> with your payment screenshot.
-            </p>
-
-            <!-- Action Buttons -->
-            <div class="flex justify-center space-x-4">
-                <button onclick="hidePaymentModal()" class="px-6 py-2 rounded-lg font-bold uppercase border-2 border-primary text-primary-light bg-transparent transition duration-300 hover:bg-primary/20 focus:outline-none">
-                    ← GO BACK TO PLANS
-                </button>
-                <a href="https://discord.com/invite/3Dxx7MeNTp" target="_blank" class="px-6 py-2 rounded-lg font-bold uppercase bg-primary text-white transition duration-300 hover:bg-indigo-700 hover:shadow-glow focus:outline-none">
-                    JOIN DISCORD
-                </a>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Inline JavaScript for Data and Functionality -->
     <script>
-        // Data structure containing plan details for each node (SAME AS BEFORE)
-        const nodeData = {
-            india: {
-                title: "INDIA NODE - PERFORMANCE TIERS",
-                subtitle: "Experience ultra-low latency. Choose the plan that suits your community size.",
-                plans: [
-                    { 
-                        name: "BUDGET PLAN", 
-                        tag: "EFFICIENT",
-                        subPlans: [
-                            { name: "Plan 1", specs: "1vCore | 1GB DDR4 | 1 Port", price: "₹20/mo" },
-                            { name: "Plan 2", specs: "1vCore | 2GB DDR4 | 4GB NVMe", price: "₹60/mo" },
-                            { name: "Plan 3", specs: "2vCores | 4GB DDR4 | 8GB NVMe", price: "₹120/mo" },
-                            { name: "Plan 4", specs: "2vCores | 8GB DDR4 | 16GB NVMe", price: "₹300/mo" },
-                            { name: "Plan 5", specs: "3vCores | 12GB DDR4 | 24GB NVMe", price: "₹479/mo" },
-                            { name: "Plan 6", specs: "4vCores | 16GB DDR4 | 32GB NVMe", price: "₹579/mo" },
-                            { name: "Plan 7", specs: "4vCores | 24GB DDR4 | 48GB NVMe", price: "₹879/mo" },
-                            { name: "Plan 8", specs: "Unlimited CPU | 32GB DDR4 | 64GB NVMe", price: "₹999/mo" },
-                            { name: "Plan 9", specs: "Unlimited CPU | 48GB DDR4 | 96GB NVme", price: "₹1299/mo" }
-                        ]
-                    },
-                    { 
-                        name: "PREMIUM PLAN", 
-                        tag: "BALANCED",
-                        subPlans: [
-                            { name: "Plan 1", specs: "1vCore | 1GB DDR4 | 2GB NVMe", price: "₹35/mo" },
-                            { name: "Plan 2", specs: "1vCore | 2GB DDR4 | 4GB NVMe", price: "₹80/mo" },
-                            { name: "Plan 3", specs: "1vCore | 4GB DDR4 | 8GB NVMe", price: "₹180/mo" },
-                            { name: "Plan 4", specs: "2vCores | 6GB DDR4 | 12GB NVMe", price: "₹330/mo" },
-                            { name: "Plan 5", specs: "2vCores | 8GB DDR4 | 16GB NVMe", price: "₹430/mo" },
-                            { name: "Plan 6", specs: "3vCores | 12GB DDR4 | 24GB NVMe", price: "₹630/mo" },
-                            { name: "Plan 7", specs: "4vCores | 16GB DDR4 | 32GB NVMe", price: "₹880/mo" },
-                            { name: "Plan 8", specs: "4vCores | 24GB DDR4 | 48GB NVMe", price: "₹1200/mo" },
-                            { name: "Plan 9", specs: "Unlimited CPU | 32GB DDR4 | 64GB NVMe", price: "₹1500/mo" },
-                            { name: "Plan 10", specs: "Unlimited CPU | 48GB DDR4 | 96GB NVMe", price: "₹2100/mo" }
-                        ]
-                    },
-                    { 
-                        name: "ULTRA PLAN", 
-                        tag: "EXTREME POWER",
-                        subPlans: [
-                            { name: "Plan 1", specs: "AMD Ryzen™ 9 | 1vCore @ 4.0GHz+ | 3GB DDR5 5200MHz | 5GB NVMe | DDoS Protected MC Proxy", price: "₹200/mo" },
-                            { name: "Plan 2", specs: "Ryzen™ 9 / EPYC 9 | 2vCores @ 4.0GHz+ | 8GB DDR5 5200MHz | 50GB NVMe | 1 Gbit Uplink", price: "₹699/mo" },
-                            { name: "Plan 3", specs: "AMD Ryzen™ 9 5900x | 3vCores @ 4.8GHz | 12GB DDR4 | 24GB NVMe | 17 Tbps DDoS | 2 Gbit Uplink", price: "₹1050/mo" },
-                            { name: "Plan 4", specs: "AMD Ryzen™ 9 / EPYC 9 | 4vCores @ 4.0GHz+ | 16GB DDR5 5200MHz | 32GB NVMe | 1 Gbit Uplink + 1x IPv4", price: "₹1399/mo" },
-                            { name: "Plan 5", specs: "AMD Ryzen™ 9 / EPYC 9 | Unlimited CPU | 32GB DDR5 5200MHz | 64GB NVMe | 1 Gbit Uplink", price: "₹2799/mo" },
-                            { name: "Plan 6", specs: "AMD Ryzen™ 9 / EPYC 9 | Unlimited CPU | 44GB DDR5 5200MHz | 200GB NVMe | 1 Gbit Uplink", price: "₹4600/mo" }
-                        ]
-                    }
-                ]
-            },
-            germany: {
-                title: "GERMANY NODE - PERFORMANCE TIERS",
-                subtitle: "European premium hosting with robust DDoS protection and low EU latency.",
-                plans: [
-                    { 
-                        name: "BUDGET PLAN", 
-                        tag: "EFFICIENT",
-                        subPlans: [
-                            { name: "Plan 1", specs: "1 vCore @ 3.4GHz | 4GB DDR4 | 20GB NVMe", price: "₹160/mo" },
-                            { name: "Plan 2", specs: "3 vCores @ 3.4GHz | 8GB DDR4 | 50GB NVMe | 3.2Tbit Premium DDoS | 3TB Bandwidth", price: "₹320/mo" },
-                            { name: "Plan 3", specs: "4 vCores @ 3.4GHz | 12GB DDR4 | 80GB NVMe | Normal DDoS | 6TB Bandwidth", price: "₹499/mo" },
-                            { name: "Plan 4", specs: "6 vCores @ 3.4GHz | 16GB DDR4 | 100GB NVMe | Normal DDoS | 7TB Bandwidth", price: "₹599/mo" },
-                            { name: "Plan 5", specs: "8 vCores @ 3.4GHz | 24GB DDR4 | 150GB NVMe | Normal DDoS | 10TB Bandwidth", price: "₹899/mo" },
-                            { name: "Plan 6", specs: "8 vCores @ 3.4GHz | 32GB DDR4 | 200GB NVMe | Normal DDoS | 12TB Bandwidth", price: "₹1099/mo" },
-                            { name: "Plan 7", specs: "10 vCores @ 3.4GHz | 64GB DDR4 | 400GB NVMe | Normal DDoS | 15TB Bandwidth", price: "₹1499/mo" }
-                        ]
-                    },
-                    { 
-                        name: "PREMIUM PLAN", 
-                        tag: "BALANCED",
-                        subPlans: [
-                            { name: "Plan 1", specs: "Intel Xeon Gold 6150 | 1 vCore @ 3.7GHz | 4GB DDR4 | 25GB NVMe | 3.2Tbit Premium DDoS | 2TB Bandwidth", price: "₹200/mo" },
-                            { name: "Plan 2", specs: "Intel Xeon Gold 6150 | 3 vCores @ 3.7GHz | 8GB DDR4 | 50GB NVMe | 3.2Tbit Premium DDoS | 4TB Bandwidth", price: "₹450/mo" },
-                            { name: "Plan 3", specs: "Intel Xeon Gold 6150 | 4 vCores @ 3.7GHz | 12GB DDR4 | 70GB NVMe | 3.2Tbit Premium DDoS | 6TB Bandwidth", price: "₹650/mo" },
-                            { name: "Plan 4", specs: "Intel Xeon Gold 6150 | 6 vCores @ 3.7GHz | 16GB DDR4 | 100GB NVMe | 3.2Tbit Premium DDoS | 8TB Bandwidth", price: "₹900/mo" },
-                            { name: "Plan 5", specs: "Intel Xeon Gold 6150 | 8 vCores @ 3.7GHz | 32GB DDR4 | 200GB NVMe | 3.2Tbit Premium DDoS | 12TB Bandwidth", price: "₹1700/mo" },
-                            { name: "Plan 6", specs: "Intel Xeon Gold 6150 | 9 vCores @ 3.7GHz | 48GB DDR4 | 300GB NVMe | 3.2Tbit Premium DDoS | 14TB Bandwidth", price: "₹2300/mo" },
-                            { name: "Plan 7", specs: "Intel Xeon Gold 6150 | 10 vCores @ 3.7GHz | 64GB DDR4 | 400GB NVMe | 3.2Tbit Premium DDoS | 16TB Bandwidth", price: "₹2700/mo" }
-                        ] 
-                    },
-                    { 
-                        name: "ULTRA PLAN", 
-                        tag: "EXTREME POWER",
-                        subPlans: [
-                            { name: "Plan 1", specs: "AMD Ryzen™ 9 5900X | 2 vCores @ 4.8GHz | 8GB DDR4 | 50GB NVMe | AS203446 DDoS | 20TB Bandwidth", price: "₹899/mo" },
-                            { name: "Plan 2", specs: "AMD Ryzen™ 9 5900X | 3 vCores @ 4.8GHz | 12GB DDR4 | 75GB NVMe | AS203446 DDoS | 25TB Bandwidth", price: "₹1250/mo" },
-                            { name: "Plan 3", specs: "AMD Ryzen™ 9 5900X | 4 vCores @ 4.8GHz | 16GB DDR4 | 110GB NVMe | AS203446 DDoS | 30TB Bandwidth", price: "₹1599/mo" },
-                            { name: "Plan 4", specs: "AMD Ryzen™ 9 5900X | 6 vCores @ 4.8GHz | 24GB DDR4 | 150GB NVMe | AS203446 DDoS | 35TB Bandwidth", price: "₹2999/mo" },
-                            { name: "Plan 5", specs: "AMD Ryzen™ 9 5900X | 6 vCores @ 3.7GHz Base / 4.8GHz Turbo | 32GB DDR4 | 200GB NVMe | AS203446 DDoS | 40TB Bandwidth", price: "₹4800/mo" }
-                        ] 
-                    }
-                ]
-            },
-            singapore: { 
-                title: "SINGAPORE NODE - PERFORMANCE TIERS",
-                subtitle: "Asia-Pacific hub for the best connectivity across Asia and Oceania. Get connected instantly.",
-                plans: [
-                    { 
-                        name: "BUDGET PLAN", 
-                        tag: "EFFICIENT",
-                        // This plan has no subPlans, triggering the 'COMING SOON' alert.
-                        subPlans: [] 
-                    },
-                    { 
-                        name: "PREMIUM PLAN", 
-                        tag: "BALANCED",
-                        subPlans: [
-                            { name: "Plan 1", specs: "AMD EPYC/Intel | 1 vCore @ 3.7GHz+ | 1GB DDR4 | 5GB NVMe", price: "₹45/mo" },
-                            { name: "Plan 2", specs: "AMD EPYC/Intel | 2 vCores @ 3.7GHz+ | 2GB DDR4 | 5GB NVMe", price: "₹110/mo" },
-                            { name: "Plan 3", specs: "AMD EPYC/Intel | 2 vCores @ 3.7GHz+ | 4GB DDR4 | 10GB NVMe", price: "₹240/mo" },
-                            { name: "Plan 4", specs: "AMD EPYC/Intel | 2.5 vCores @ 3.7GHz+ | 6GB DDR4 | 15GB NVMe", price: "₹379/mo" },
-                            { name: "Plan 5", specs: "AMD EPYC/Intel | 3 vCores @ 3.7GHz+ | 8GB DDR4 | 20GB NVme", price: "₹500/mo" },
-                            { name: "Plan 6", specs: "AMD EPYC/Intel | 4 vCores @ 3.7GHz+ | 12GB DDR4 | 30GB NVMe", price: "₹760/mo" },
-                            { name: "Plan 7", specs: "AMD EPYC/Intel | 4 vCores @ 3.7GHz+ | 16GB DDR4 | 50GB NVMe", price: "₹979/mo" },
-                            { name: "Plan 8", specs: "AMD EPYC/Intel | 6 vCores @ 3.7GHz+ | 24GB DDR4 | 75GB NVMe", price: "₹1299/mo" },
-                            { name: "Plan 9", specs: "AMD EPYC/Intel | 8 vCores @ 3.7GHz+ | 32GB DDR4 | 100GB NVMe", price: "₹1500/mo" }
-                        ]
-                    },
-                    { 
-                        name: "ULTRA PLAN", 
-                        tag: "EXTREME POWER",
-                        subPlans: [
-                            { name: "Plan 1", specs: "AMD EPYC™ 4464P | 3 Cores @ 5.4GHz | 12GB RAM (ECC) | 80GB SSD/NVMe | 1TB Bandwidth | Premium DDoS Protection", price: "₹450/mo" }
-                        ] 
-                    }
-                ]
-            }
+        const messages = {
+            2: "Main ye baat bhot honestly bol raha hoon aaj kal ki duniya me log sirf upar ki khubsurati dekhte hain par mere liye aapka wo sacha dil aapka loving nature aur aapki baatein duniya me sabse zyada special hain",
+            3: "Jab aapne kaha ki rishte me loyalty care aur ek dusre ko achhe se samajhna sabse bada hota hai tab mujhe realize hua ki meri aur aapki soch kitni zyada milti hai aesa insaan milna ek bless hai",
+            4: "Main hamari is bonding ko bilkul Radha Krishna ji ke prem ki tarah sacha aur pavitra maanta hoon jahan koi shart nahi hoti jahan sirf ek dusre ke liye beintehaa izzat sachaai aur dilon ka gehra rishta hota hai",
+            5: "Mujhe dusron ki care karna unki khushi ko khud se pehle rakhna aur sabko hasana bhot sukoon deta hai aur main hamesha aapke liye bhi yahi sab karna chahta hoon aapki smile ko protect karna chahta hoon",
+            6: "Main aapki khushi ke liye zindagi me kuch bhi karne ko tayar hoon aapke har dukh ko smile me badal dunga aur aapko hamesha itna khush rakhunga ki aapko kabhi kisi cheez ki chinta nahi karni padegi",
+            7: "Zindagi me chahe jaisi bhi situation aaye chahe kitne bhi utaar chadhaw aayein main hamesha aapka haath thaame rakhunga har mushkil me sabse pehle aapke sath khada rahunga aur hamari bonding hamesha sabse upar rahegi",
+            8: "Agar aapne haan bola na toh main zindagi me kabhi aapka sath nahi chhodunga Main hamesha aapke liye 100% loyal rahunga aapko kabhi dukh nahi dunga aur kabhi hurt nahi karunga ye mera sabse sacha vada hai",
+            9: "Main sach me nahi jaanta ki aage kya hoga par abhi jo ye hamari pyari si bonding hai ye mere liye duniya me sabse zyada special hai So kya aap is safar me mera sath dogi",
+            10: "Aapne mujhe duniya ka sabse khushnaseeb ladka bana diya hai Main hamesha aapka dhyan rakhunga aapko bhot khush rakhunga aur aapke mummy papa ko bhi apne khud ke mummy papa ki tarah izzat aur pyar dunga"
         };
 
-        // DOM Elements
-        const plansOverlay = document.getElementById('plans-overlay');
-        const detailTitle = document.getElementById('detail-title');
-        const detailSubtitle = document.getElementById('detail-subtitle');
-        const detailPlanGrid = document.getElementById('detail-plan-grid');
-        
-        const subPlansOverlay = document.getElementById('sub-plans-overlay');
-        const subDetailTitle = document.getElementById('sub-detail-title');
-        const subPlansContainer = document.getElementById('sub-plans-container');
-        const subPlansBackButton = document.getElementById('sub-plans-back-button'); 
-        
-        const paymentModal = document.getElementById('payment-modal');
-        const selectedPlanName = document.getElementById('selected-plan-name');
-        
-        const body = document.body;
-
-        // Stores the name of the currently selected plan for the payment modal to use
-        let currentSelectedPlan = '';
-        
-        // Stores the Node key for back navigation
-        let currentNodeKey = '';
-
-        /**
-         * Switches the view to display detailed plans for the selected node (Budget, Premium, Ultra) in Level 1 overlay.
-         * @param {string} nodeKey - The key of the node (e.g., 'india').
-         */
-        function showPlans(nodeKey) {
-            currentNodeKey = nodeKey; // Save the node key
-            const data = nodeData[nodeKey];
-
-            if (!data) {
-                console.error(`Node data not found for ${nodeKey}.`);
-                return;
-            }
+        function nextCard(current) {
+            const nextIdx = current + 1;
+            document.getElementById(`card${current}`).classList.remove('active');
+            document.getElementById(`card${nextIdx}`).classList.add('active');
             
-            // Hide Level 2 Overlay and Level 3 Modal if visible
-            subPlansOverlay.style.display = 'none';
-            paymentModal.style.display = 'none';
-
-            // 1. Update Level 1 header
-            detailTitle.textContent = data.title;
-            detailSubtitle.textContent = data.subtitle;
-
-            // 2. Build plan cards
-            detailPlanGrid.innerHTML = data.plans.map(plan => {
-                // Determine the function call based on whether subPlans exist
-                const clickHandler = plan.subPlans && plan.subPlans.length > 0 
-                    ? `showSubPlans('${nodeKey}', '${plan.name}')` 
-                    : `alertNotAvailable('${plan.name}')`;
-                
-                return `
-                    <div class="pricing-card bg-bg-card p-8 rounded-xl border-2 border-primary/30 shadow-xl shadow-black/50 hover:shadow-card-hover transition duration-500 transform hover:-translate-y-1 flex flex-col justify-between cursor-pointer animate-in">
-                        <div class="flex-grow flex flex-col justify-center">
-                            <h3 class="text-2xl font-heading font-bold text-white mb-2">${plan.name}</h3>
-                            <span class="inline-block px-4 py-1 text-sm font-semibold rounded-full bg-secondary-accent text-gray-900 mb-6">${plan.tag}</span>
-                        </div>
-                        <div>
-                            <a href="#" onclick="${clickHandler}; return false;" class="px-6 py-3 bg-primary text-white rounded-lg text-lg font-bold uppercase hover:bg-indigo-700 transition block">VIEW SPECS</a>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-
-            // 3. Show Level 1 view and disable main page scroll
-            plansOverlay.style.display = 'block';
-            body.classList.add('overlay-active');
-            
-            // Scroll the overlay content to the top
-            plansOverlay.scrollTop = 0; 
-            
-            // Re-run animations for the newly visible content
-            setTimeout(runAnimations, 50); 
-        }
-        
-        /**
-         * Switches the view to display detailed sub-plans (Plan 1-9) in Level 2 overlay.
-         */
-        function showSubPlans(nodeKey, planName) {
-            const node = nodeData[nodeKey];
-            const plan = node.plans.find(p => p.name === planName);
-
-            if (!plan || !plan.subPlans || plan.subPlans.length === 0) {
-                alertNotAvailable(planName);
-                showPlans(nodeKey); 
-                return;
-            }
-
-            // 1. Update Level 2 header and the back button's functionality
-            subDetailTitle.textContent = `${planName} - DETAILED SPECS`;
-            subPlansBackButton.setAttribute('onclick', `showPlans('${nodeKey}')`);
-
-            // 2. Build the list of sub-plans
-            subPlansContainer.innerHTML = plan.subPlans.map(subPlan => {
-                const fullPlanName = `${node.title.split(' - ')[0]} | ${planName} | ${subPlan.name} (${subPlan.price})`;
-                return `
-                    <div class="sub-plan-item p-4 md:p-6 bg-gray-900 border border-primary/20 rounded-lg shadow-xl hover:shadow-primary/30 transition duration-300 transform hover:scale-[1.01] flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 animate-in">
-                        <div class="flex flex-col md:flex-row md:items-center md:space-x-4 w-full">
-                            <span class="plan-name text-lg font-heading font-bold text-secondary-accent min-w-[120px] text-left">${subPlan.name}</span>
-                            <span class="plan-details-text text-base text-gray-300 flex-grow text-left">${subPlan.specs}</span>
-                        </div>
-                        <div class="flex items-center space-x-4 w-full md:w-auto md:justify-end">
-                            <span class="plan-price text-lg font-heading font-bold text-primary-light whitespace-nowrap">${subPlan.price}</span>
-                            <button onclick="showPaymentModal('${fullPlanName}')" class="px-5 py-2 bg-primary text-white rounded-md text-sm font-bold uppercase hover:bg-indigo-700 transition w-full md:w-auto">BUY NOW</button>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-
-            // 3. Add "MORE COMING SOON..." specifically for ULTRA PLANs that have existing content
-            let comingSoonMessage = '';
-            if (planName === "ULTRA PLAN" && plan.subPlans.length > 0) {
-                 comingSoonMessage = `
-                    <div class="mt-8 p-4 bg-secondary-accent/10 border border-secondary-accent/50 rounded-lg text-lg font-heading font-bold text-secondary-accent">
-                        MORE COMING SOON...
-                    </div>
-                `;
-            }
-            subPlansContainer.innerHTML += comingSoonMessage;
-
-
-            // 4. Switch views
-            plansOverlay.style.display = 'none'; // Hide Level 1
-            subPlansOverlay.style.display = 'block'; // Show Level 2
-            
-            // Scroll the overlay content to the top
-            subPlansOverlay.scrollTop = 0;
-            
-            // Re-run animations for the newly visible content
-            setTimeout(runAnimations, 50); 
-        }
-
-        /**
-         * Shows the payment modal (Level 3) with the selected plan details.
-         */
-        function showPaymentModal(fullPlanName) {
-            currentSelectedPlan = fullPlanName; // Store the full plan name
-            selectedPlanName.textContent = fullPlanName; // Display in modal
-
-            // Hide Level 2 and show Level 3
-            subPlansOverlay.style.display = 'none';
-            paymentModal.style.display = 'flex';
-        }
-
-        /**
-         * Hides the payment modal (Level 3) and returns to the sub-plans list (Level 2).
-         */
-        function hidePaymentModal() {
-            paymentModal.style.display = 'none';
-            // Re-display the sub-plans overlay.
-            subPlansOverlay.style.display = 'block';
-            subPlansOverlay.scrollTop = 0;
-            setTimeout(runAnimations, 50); 
-        }
-        
-        /**
-         * Copies the UPI ID to the clipboard and shows a temporary message box.
-         */
-        function copyUpiId() {
-            const upiId = document.getElementById('upi-id-text').textContent;
-            
-            // Use execCommand('copy') for better compatibility in iframe environments
-            const tempInput = document.createElement('input');
-            document.body.appendChild(tempInput);
-            tempInput.setAttribute('value', upiId);
-            tempInput.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempInput);
-
-            // Show confirmation message (using the existing alertNotAvailable style)
-            const message = "UPI ID Copied: sushantlite@fam"; 
-             
-            const msgBox = document.createElement('div');
-            msgBox.style.cssText = `
-                position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-                background: #1A1A2A; color: #00FCE3;
-                padding: 20px 30px; border-radius: 8px; border: 2px solid #00FCE3;
-                box-shadow: 0 0 15px rgba(0, 252, 227, 0.7); z-index: 3000; font-family: 'Orbitron', sans-serif;
-                font-size: 1.2rem; font-weight: bold; text-align: center; max-width: 90vw;
-            `;
-            msgBox.textContent = message;
-            document.body.appendChild(msgBox);
-
-            setTimeout(() => {
-                if(document.body.contains(msgBox)) {
-                   document.body.removeChild(msgBox);
-                }
-            }, 1800); 
-        }
-
-
-        /**
-         * Shows a custom message box when plans are not available (since alert() is forbidden).
-         */
-        function alertNotAvailable(planName) {
-             const message = `COMING SOON: ${planName}`; 
-             
-             const msgBox = document.createElement('div');
-             msgBox.style.cssText = `
-                 position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-                 background: #1A1A2A; color: #FFC000;
-                 padding: 25px 40px; border-radius: 10px; border: 2px solid #FFC000;
-                 box-shadow: 0 0 20px rgba(255, 192, 0, 0.7); z-index: 2000; font-family: 'Orbitron', sans-serif;
-                 font-size: 1.5rem; font-weight: bold; text-align: center; max-width: 90vw;
-                 letter-spacing: 2px;
-             `;
-             msgBox.textContent = message;
-             document.body.appendChild(msgBox);
-
-             setTimeout(() => {
-                 if(document.body.contains(msgBox)) {
-                    document.body.removeChild(msgBox);
-                 }
-             }, 2000); 
-        }
-
-        /**
-         * Switches the view back to the main three node cards and re-enables scrolling.
-         */
-        function showMainNodes() {
-            plansOverlay.style.display = 'none';
-            subPlansOverlay.style.display = 'none';
-            paymentModal.style.display = 'none';
-            body.classList.remove('overlay-active');
-
-            document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
-        }
-
-
-        // --------------------------------------------------------------------
-        // SCROLL ANIMATIONS LOGIC 
-        // --------------------------------------------------------------------
-        function runAnimations() {
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1 
-            };
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !entry.target.classList.contains('is-visible')) {
-                        entry.target.classList.add('is-visible');
-                    }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('.animate-in').forEach(element => {
-                // Remove visible class only if we are in an overlay (to re-animate when the overlay shows)
-                if (element.closest('#plans-overlay') || element.closest('#sub-plans-overlay')) {
-                     element.classList.remove('is-visible'); 
-                }
-                observer.observe(element);
+            typeEffect(`text${nextIdx}`, messages[nextIdx], () => {
+                const nextBtn = document.getElementById(`btn${nextIdx}`);
+                if(nextBtn) nextBtn.style.display = 'block';
             });
-            
-            // Make header visible only after all content has loaded
-            document.getElementById('header').classList.add('is-visible');
         }
-        
-        // CSS for Animate-in functionality (Added here for self-contained file)
-        const animationStyle = document.createElement('style');
-        animationStyle.textContent = `
-            .animate-in {
-                opacity: 0;
-                transform: translateY(30px);
-                transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-            }
 
-            .animate-in.delay-1 { transition-delay: 0.1s; }
-            .animate-in.delay-2 { transition-delay: 0.2s; }
-            .animate-in.delay-3 { transition-delay: 0.3s; }
-            .animate-in.delay-4 { transition-delay: 0.4s; }
-            .animate-in.delay-5 { transition-delay: 0.5s; }
-
-            .is-visible {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        `;
-        document.head.appendChild(animationStyle);
-
-        
-        // Initial setup for scroll animations and navigation
-        document.addEventListener('DOMContentLoaded', () => {
-            runAnimations();
+        function typeEffect(elementId, text, callback) {
+            let i = 0;
+            const speed = 35; 
+            const elem = document.getElementById(elementId);
+            elem.innerHTML = "";
             
-            // Smooth scroll for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (targetId && targetId !== '#') {
-                        document.querySelector(targetId).scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-        });
+            function type() {
+                if (i < text.length) {
+                    elem.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else if (callback) {
+                    callback();
+                }
+            }
+            type();
+        }
 
+        function celebrate() {
+            document.getElementById('card9').classList.remove('active');
+            document.getElementById('card10').classList.add('active');
+            typeEffect('text10', messages[10]);
+            for(let i=0; i<60; i++) {
+                setTimeout(createParticle, i * 60);
+            }
+        }
+
+        function moveNoButton() {
+            const noBtn = document.getElementById('noBtn');
+            const container = document.querySelector('.choice-container');
+            const maxX = container.clientWidth - noBtn.clientWidth;
+            const maxY = 160; 
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY) - 60;
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        }
+
+        const bg = document.getElementById('bgAnimation');
+        function createParticle() {
+            const el = document.createElement('div');
+            el.classList.add('glow-particle');
+            const size = Math.random() * 8 + 6;
+            el.style.width = size + 'px';
+            el.style.height = size + 'px';
+            el.style.left = Math.random() * 100 + 'vw';
+            el.style.animationDuration = (Math.random() * 2 + 4) + 's';
+            bg.appendChild(el);
+            setTimeout(() => { el.remove(); }, 6000);
+        }
+        setInterval(createParticle, 250);
     </script>
 </body>
 </html>
-
